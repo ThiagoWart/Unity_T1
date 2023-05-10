@@ -17,3 +17,7 @@ jobs:
       run: "sudo apt-get update; sudo apt-get -y install cppcheck-gui cppcheck clang valgrind"
     - name: cppcheck
       run: "cd examples/foo; make all"
+<<<<<<< HEAD
+=======
+
+>>>>>>> bd2bbb75a2e412d5b7cdd4c7e5d590ad6d3b00a4
