@@ -1,6 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "src/sort.h"
+#include "unity.h"
+#include "unity_fixture.h"
+
+TEST_GROUP(Sort);
+
+TEST_SETUP(Sort){}
+
+TEST_TEAR_DOWN(Sort){}
+
 
 // Main Functions
 void print_array(int* a, int length){
