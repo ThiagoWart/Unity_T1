@@ -13,15 +13,24 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
+
     - name: install_packages
       run: "sudo apt-get update; sudo apt-get -y install cppcheck-gui cppcheck clang valgrind"
+
+    - name: all
+      run: cd examples/T1; make all
+
     - name: cppcheck
-      run: "cd examples/T1; make all"
+      run: cd examples/T1; make cppcheck
+
     - name: make
-      run: "cd app; make"
+      run: cd examples/T1; make
+
     - name: cov
-      run: "cd app; make cov"
+      run: cd examples/T1; make cov
+
     - name: valgrind
-      run: "cd app; make valgrind"
+      run: cd examples/T1; make valgrind
+      
     - name: sanitizer
-      run: "cd app; make sanitizer"
+      run: cd examples/T1; make sanitizer

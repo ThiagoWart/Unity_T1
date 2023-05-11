@@ -44,6 +44,7 @@ CFLAGS += -Wold-style-definition
 
 TARGET_BASE1=all_tests
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
+
 SRC_FILES1=\
   $(UNITY_ROOT)/src/unity.c \
   $(UNITY_ROOT)/extras/fixture/src/unity_fixture.c \
@@ -59,6 +60,7 @@ SRC_FILES1=\
   test/TestSort.c \
   test/test_runners/TestSort_Runner.c \
   test/test_runners/all_tests.c
+
 INC_DIRS=-Isrc -I$(UNITY_ROOT)/src -I$(UNITY_ROOT)/extras/fixture/src
 SYMBOLS=
 
@@ -72,25 +74,26 @@ compile:
 	$(GCC_COMPILER) $(CFLAGS) $(INC_DIRS) $(SRC_FILES) -o $(TARGET)
 
 cppcheck:
-	cppcheck --enable=all --suppress=missingIncludeSystem --suppress=unusedFunction $(INC_DIRS) src/sort.c
+	cppcheck --enable=all --suppress=missingIncludeSystem --suppress=unusedFunction $(INC_DIRS) $(SRC_FILES1)
 
 valgrind:
-	$(GCC_COMPILER) -g -Wall -Wfatal-errors $(INC_DIRS) $(SRC_FILES) -o $(TARGET)
-	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET) -v
+	$(C_COMPILER) -g -Wall -Wfatal-errors $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET1) -v
 
 sanitizer:
-	$(CLANG_COMPILER) -g -Wall -Wfatal-errors -fsanitize=address $(INC_DIRS) $(SRC_FILES) -o $(TARGET)
-	./$(TARGET) -v
+	$(CLANG_COMPILER) -g -Wall -Wfatal-errors -fsanitize=address $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
+	./$(TARGET1) -v
 
 cov:
-	$(GCC_COMPILER) $(CFLAGS) -fprofile-arcs -ftest-coverage $(INC_DIRS) $(SRC_FILES) -o $(TARGET)
-	./$(TARGET) -v
-	gcov -b sort.c
+	$(C_COMPILER) $(CFLAGS) -fprofile-arcs -ftest-coverage $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
+	./$(TARGET1) -v
+	gcov -b sort.c bubble_sort.c counting_sort.c heap_sort.c insertion_sort.c merge_sort.c quick_sort.c radix_sort.c selection_sort.c
 
 run:
-	./$(TARGET) -v
+	./$(TARGET1) -v
 
 clean:
-	rm -fr $(TARGET) *.gcno *.gcda *.gcov *.dSYM
+	$(CLEANUP) $(TARGET) *.gcno *.gcda *.gcov *.dSYM *.gc*
 
-
+ci: CFLAGS += -Werror
+ci: compile
