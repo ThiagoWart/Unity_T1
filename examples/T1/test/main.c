@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "src/sort.h"
+#include "sort.h"
 #include "unity.h"
 #include "unity_fixture.h"
 
