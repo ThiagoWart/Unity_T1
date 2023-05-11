@@ -59,7 +59,8 @@ SRC_FILES1=\
   src/sort.c \
   test/TestSort.c \
   test/test_runners/TestSort_Runner.c \
-  test/test_runners/all_tests.c
+  test/test_runners/all_tests.c \
+  main.c
 
 INC_DIRS=-Isrc -I$(UNITY_ROOT)/src -I$(UNITY_ROOT)/extras/fixture/src
 SYMBOLS=
@@ -87,7 +88,7 @@ sanitizer:
 cov:
 	$(C_COMPILER) $(CFLAGS) -fprofile-arcs -ftest-coverage $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
 	./$(TARGET1) -v
-	gcov -b sort.c bubble_sort.c counting_sort.c heap_sort.c insertion_sort.c merge_sort.c quick_sort.c radix_sort.c selection_sort.c
+	gcov -b sort.c bubble_sort.c counting_sort.c heap_sort.c insertion_sort.c merge_sort.c quick_sort.c radix_sort.c selection_sort.c main.c
 
 run:
 	./$(TARGET1) -v
