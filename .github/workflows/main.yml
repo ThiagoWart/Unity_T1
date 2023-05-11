@@ -5,15 +5,14 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+    
 jobs:
   build:
-    
+
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v3
-
     - name: install_packages
       run: "sudo apt-get update; sudo apt-get -y install cppcheck-gui cppcheck clang valgrind"
 
@@ -23,14 +22,11 @@ jobs:
     - name: cppcheck
       run: cd examples/T1; make cppcheck
 
-    - name: make
-      run: cd examples/T1; make
-
     - name: cov
       run: cd examples/T1; make cov
 
     - name: valgrind
       run: cd examples/T1; make valgrind
-      
+
     - name: sanitizer
       run: cd examples/T1; make sanitizer
