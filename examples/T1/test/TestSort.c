@@ -29,7 +29,6 @@ TEST(Sort, TestSort1)
   int vet8[10] = {9, 5, 7, 2, 1, 0, 4, 6, 8, 3};
   int expected[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
   int tam = 10;
-  int i = 0;
 
   sort(vet1, tam, (char *)"On", COUNTING);
   sort(vet2, tam, (char *)"On", RADIX);
@@ -95,7 +94,6 @@ TEST(Sort, TestSort4)
   int vet8[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
   int expected[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
   int tam = 10;
-  int i = 0;
 
   sort(vet1, tam, (char *)"On", COUNTING);
   sort(vet2, tam, (char *)"On", RADIX);
@@ -145,7 +143,6 @@ TEST(Sort, TestSort6)
   int vet8[5] = {5, 5, 5, 5, 5};
   int expected[5] = {5, 5, 5, 5, 5};
   int tam = 5;
-  int i = 0;
 
   sort(vet1, tam, (char *)"On", COUNTING);
   sort(vet2, tam, (char *)"On", RADIX);
@@ -178,7 +175,6 @@ TEST(Sort, TestSort7)
   int vet8[5] = {5, 5, 5, 5, 1};
   int expected[5] = {1, 5, 5, 5, 5};
   int tam = 5;
-  int i = 0;
 
   sort(vet1, tam, (char *)"On", COUNTING);
   sort(vet2, tam, (char *)"On", RADIX);
