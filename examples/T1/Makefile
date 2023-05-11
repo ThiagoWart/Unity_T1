@@ -71,7 +71,7 @@ all:
 	clean compile run
 
 compile:
-	$(GCC_COMPILER) $(CFLAGS) $(INC_DIRS) $(SRC_FILES) -o $(TARGET)
+	$(GCC_COMPILER) $(CFLAGS) $(INC_DIRS) $(SRC_FILES) -o $(TARGET1)
 
 cppcheck:
 	cppcheck --enable=all --suppress=missingIncludeSystem --suppress=unusedFunction $(INC_DIRS) $(SRC_FILES1)
@@ -93,7 +93,7 @@ run:
 	./$(TARGET1) -v
 
 clean:
-	$(CLEANUP) $(TARGET) *.gcno *.gcda *.gcov *.dSYM *.gc*
+	$(CLEANUP) $(TARGET1) *.gcno *.gcda *.gcov *.dSYM *.gc*
 
 ci: CFLAGS += -Werror
 ci: compile
