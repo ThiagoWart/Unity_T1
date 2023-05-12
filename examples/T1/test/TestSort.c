@@ -285,3 +285,12 @@ TEST(Sort, TestSort10)
   TEST_ASSERT_EQUAL_INT32_ARRAY(vet7, expected, tam);
   TEST_ASSERT_EQUAL_INT32_ARRAY(vet8, expected, tam);
 }
+
+// teste de parametro do algoritmo incorreto
+TEST(Sort, TestSort11)
+{
+  int vet[5] = {4, 3, 2, 1, 0};
+  int tam = 5;
+
+  TEST_ASSERT_EQUAL(1, sort(vet, tam, (char *)"On", 9));
+}
